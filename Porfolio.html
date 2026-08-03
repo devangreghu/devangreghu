@@ -1,0 +1,501 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Devang Reghuthaman — Product Management Portfolio</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#12151c;
+    --ink-2:#191d26;
+    --paper:#ece8de;
+    --paper-dim:#a9a79f;
+    --signal:#ff6b35;
+    --line:#4a90a4;
+    --graphite:#8b8f98;
+    --hairline:rgba(236,232,222,0.12);
+    --display: 'Space Grotesk', sans-serif;
+    --body: 'IBM Plex Sans', sans-serif;
+    --mono: 'IBM Plex Mono', monospace;
+  }
+  *{box-sizing:border-box; margin:0; padding:0;}
+  html{scroll-behavior:smooth;}
+  @media (prefers-reduced-motion: reduce){
+    html{scroll-behavior:auto;}
+    *{animation-duration:0.01ms !important; transition-duration:0.01ms !important;}
+  }
+  body{
+    background:var(--ink);
+    color:var(--paper);
+    font-family:var(--body);
+    line-height:1.6;
+    overflow-x:hidden;
+  }
+  a{color:inherit; text-decoration:none;}
+  :focus-visible{outline:2px solid var(--signal); outline-offset:3px;}
+
+  .wrap{max-width:1040px; margin:0 auto; padding:0 28px;}
+
+  /* NAV */
+  nav{
+    position:fixed; top:0; left:0; right:0; z-index:100;
+    background:rgba(18,21,28,0.85); backdrop-filter:blur(8px);
+    border-bottom:1px solid var(--hairline);
+  }
+  nav .wrap{display:flex; justify-content:space-between; align-items:center; height:64px;}
+  .nav-name{font-family:var(--display); font-weight:700; font-size:20px; letter-spacing:0.02em;}
+  .nav-links{display:flex; gap:28px; font-family:var(--mono); font-size:12px; text-transform:uppercase; letter-spacing:0.08em;}
+  .nav-links a{color:var(--graphite); transition:color 0.2s;}
+  .nav-links a:hover{color:var(--signal);}
+
+  /* HERO */
+  header.hero{padding:180px 0 100px; position:relative;}
+  .eyebrow-board{
+    display:inline-flex; gap:2px; font-family:var(--mono); font-size:12px;
+    letter-spacing:0.12em; text-transform:uppercase; color:var(--ink);
+    background:var(--signal); padding:6px 10px; margin-bottom:28px;
+  }
+  h1.title{
+    font-family:var(--display); font-weight:700;
+    font-size:clamp(40px, 7vw, 76px); line-height:1.03; letter-spacing:-0.01em;
+  }
+  .title .accent{color:var(--signal);}
+  .flip-role{
+    font-family:var(--mono); font-size:clamp(16px,2.4vw,20px); color:var(--line);
+    margin-top:22px; min-height:28px;
+  }
+  .flip-role .cursor{display:inline-block; width:9px; background:var(--signal); animation:blink 1s step-end infinite; margin-left:2px;}
+  @keyframes blink{50%{opacity:0;}}
+  .hero-sub{max-width:560px; color:var(--paper-dim); font-size:16px; margin-top:20px;}
+  .hero-ctas{display:flex; gap:16px; margin-top:40px; flex-wrap:wrap;}
+  .btn{
+    font-family:var(--mono); font-size:13px; text-transform:uppercase; letter-spacing:0.06em;
+    padding:13px 22px; border:1px solid var(--hairline); transition:all 0.2s; display:inline-block;
+  }
+  .btn-primary{background:var(--signal); color:var(--ink); border-color:var(--signal); font-weight:500;}
+  .btn-primary:hover{background:transparent; color:var(--signal);}
+  .btn-secondary{color:var(--paper);}
+  .btn-secondary:hover{border-color:var(--paper); background:var(--ink-2);}
+
+  /* SECTION SCAFFOLD */
+  section{padding:90px 0; position:relative; z-index:1;}
+  .station{
+    display:flex; align-items:center; gap:14px; margin-bottom:44px;
+  }
+  .station-dot{
+    width:12px; height:12px; border-radius:50%; background:var(--ink);
+    border:2px solid var(--signal); flex-shrink:0;
+  }
+  .station-label{font-family:var(--mono); font-size:12px; letter-spacing:0.12em; text-transform:uppercase; color:var(--line);}
+  h2.section-title{font-family:var(--display); font-size:clamp(28px,4vw,40px); font-weight:600; margin-top:6px;}
+
+  /* WORK / TRAVELBUDDY CARD — boarding-pass styled */
+  .ticket{
+    background:var(--ink-2); border:1px solid var(--hairline); border-radius:2px;
+    padding:36px; margin-top:8px; position:relative; overflow:hidden;
+  }
+  .ticket::before{
+    content:''; position:absolute; left:0; right:0; top:0; height:4px;
+    background:repeating-linear-gradient(90deg, var(--signal) 0 10px, transparent 10px 20px);
+  }
+  .ticket-tag{font-family:var(--mono); font-size:11px; letter-spacing:0.1em; text-transform:uppercase; color:var(--signal); margin-bottom:14px;}
+  .ticket h3{font-family:var(--display); font-size:28px; font-weight:600;}
+  .ticket p.desc{color:var(--paper-dim); margin-top:14px; max-width:600px;}
+  .ticket-meta{display:flex; gap:34px; margin-top:26px; flex-wrap:wrap;}
+  .meta-item .k{font-family:var(--mono); font-size:10px; text-transform:uppercase; color:var(--graphite); letter-spacing:0.1em;}
+  .meta-item .v{font-family:var(--mono); font-size:14px; color:var(--paper); margin-top:4px;}
+  .ticket-body{margin-top:28px; padding-top:24px; border-top:1px dashed var(--hairline);}
+  .ticket-body h4{font-family:var(--mono); font-size:12px; text-transform:uppercase; letter-spacing:0.08em; color:var(--line); margin-bottom:8px; margin-top:18px;}
+  .ticket-body h4:first-child{margin-top:0;}
+  .ticket-body p{color:var(--paper-dim); font-size:15px;}
+  .ticket-ctas{display:flex; gap:14px; margin-top:28px; flex-wrap:wrap;}
+
+  .ticket-body ul{margin:10px 0 0 20px;}
+  .ticket-body li{color:var(--paper-dim); font-size:15px; margin-bottom:6px;}
+  .ticket-body .subhead{font-family:var(--display); font-size:15px; font-weight:600; color:var(--paper); margin-top:16px;}
+  .mockup{
+    font-family:var(--mono); font-size:13px; color:var(--paper-dim);
+    background:var(--ink); border:1px solid var(--hairline); border-left:3px solid var(--line);
+    padding:18px 20px; margin-top:12px; white-space:pre-wrap; line-height:1.7;
+  }
+  .mockup .hl{color:var(--signal);}
+  .ticket-divider{border-top:1px dashed var(--hairline); margin:34px 0;}
+
+  /* NETFLIX CARD */
+  .netflix-card{
+    background:#141414; border:1px solid #2a2a2a; border-radius:4px;
+    padding:44px; margin-top:8px; position:relative; overflow:hidden;
+  }
+  .netflix-card::before{
+    content:''; position:absolute; left:0; right:0; top:0; height:4px; background:#e50914;
+  }
+  .netflix-N{
+    font-family:'Georgia', serif; font-weight:900; font-size:56px; color:#e50914;
+    letter-spacing:-2px; line-height:1;
+  }
+  .netflix-tag{font-family:var(--mono); font-size:11px; letter-spacing:0.1em; text-transform:uppercase; color:#e50914; margin-top:20px;}
+  .netflix-title{font-family:var(--display); font-size:26px; font-weight:700; color:#fff; margin-top:8px;}
+  .netflix-desc{color:#999; margin-top:12px; max-width:560px; font-size:15px;}
+  .netflix-toggle{
+    margin-top:28px; background:#e50914; color:#fff; border:none; padding:13px 24px;
+    font-family:var(--mono); font-size:13px; text-transform:uppercase; letter-spacing:0.05em;
+    cursor:pointer; border-radius:3px; display:inline-flex; align-items:center; gap:8px;
+    transition:background 0.2s;
+  }
+  .netflix-toggle:hover{background:#f6121d;}
+  .netflix-toggle .arrow{transition:transform 0.2s; display:inline-block;}
+  .netflix-toggle.open .arrow{transform:rotate(90deg);}
+  .netflix-details{
+    display:none; margin-top:34px; padding-top:30px; border-top:1px solid #2a2a2a;
+  }
+  .netflix-details.open{display:block;}
+
+  /* EXPERIENCE TIMELINE */
+  .stop{
+    padding:24px 0 24px 30px; border-left:2px solid var(--hairline); position:relative; margin-left:5px;
+  }
+  .stop::before{
+    content:''; position:absolute; left:-7px; top:28px; width:12px; height:12px;
+    border-radius:50%; background:var(--ink); border:2px solid var(--line);
+  }
+  .stop.current::before{border-color:var(--signal); background:var(--signal);}
+  .stop .role{font-family:var(--display); font-size:19px; font-weight:600;}
+  .stop .org{font-family:var(--mono); font-size:12px; color:var(--line); letter-spacing:0.05em; margin-top:2px;}
+  .stop .desc{color:var(--paper-dim); font-size:14.5px; margin-top:8px; max-width:560px;}
+
+  /* CERTS */
+  .badge-grid{display:flex; flex-wrap:wrap; gap:12px; margin-top:8px;}
+  .badge{
+    font-family:var(--mono); font-size:12px; padding:9px 14px; border:1px solid var(--hairline);
+    color:var(--paper-dim); background:var(--ink-2);
+  }
+
+  /* CONTACT */
+  .contact-ticket{
+    background:var(--ink-2); border:1px solid var(--hairline); padding:40px; text-align:left;
+    display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:24px;
+  }
+  .contact-ticket h2{font-family:var(--display); font-size:26px;}
+  .contact-ticket p{color:var(--paper-dim); margin-top:8px;}
+
+  footer{padding:40px 0; text-align:center; font-family:var(--mono); font-size:11px; color:var(--graphite); border-top:1px solid var(--hairline);}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="wrap">
+    <div class="nav-name">DEVANG REGHUTHAMAN</div>
+    <div class="nav-links">
+      <a href="#work">Work</a>
+      <a href="#experience">Experience</a>
+      <a href="#skills">Skills</a>
+      <a href="#certifications">Certifications</a>
+      <a href="#contact">Contact</a>
+    </div>
+  </div>
+</nav>
+
+
+<header class="hero">
+  <div class="wrap">
+    <div class="eyebrow-board">NOW BOARDING · PRODUCT MANAGEMENT</div>
+    <h1 class="title">Building the <span class="accent">route</span><br>from support to strategy.</h1>
+    <div class="flip-role" id="flipRole"></div>
+    <p class="hero-sub">7+ years leading customer relationships across BPO and enterprise support — now applying that ground-level insight to product thinking, with a live AI-built prototype to show for it.</p>
+    <div class="hero-ctas">
+      <a href="#work" class="btn btn-primary">See the work</a>
+      <a href="#contact" class="btn btn-secondary">Get in touch</a>
+    </div>
+  </div>
+</header>
+
+<section id="work">
+  <div class="wrap">
+    <div class="station">
+      <div class="station-dot"></div>
+      <div class="station-label">Featured Build</div>
+    </div>
+    <h2 class="section-title">TravelBuddy</h2>
+
+    <div class="ticket">
+      <div class="ticket-tag">Travel Tech · Rapid Prototype · Google AI Studio</div>
+      <h3>Optimal Route Finder</h3>
+      <p class="desc">Enter your hotel, get the smartest way to explore — real-time transit options, ticket prices, and optimal routes, calculated instantly from wherever you're staying.</p>
+
+      <div class="ticket-meta">
+        <div class="meta-item"><div class="k">Platform</div><div class="v">Google AI Studio</div></div>
+        <div class="meta-item"><div class="k">Domain</div><div class="v">Travel / Transit</div></div>
+        <div class="meta-item"><div class="k">Status</div><div class="v">Live Prototype</div></div>
+      </div>
+
+      <div class="ticket-body">
+        <h4>The Problem</h4>
+        <p>Travelers arriving at a new hotel often lose the first hour juggling maps, transit apps, and ticketing sites just to figure out where to go next and how to get there affordably.</p>
+
+        <h4>The Approach</h4>
+        <p>A single-input experience: enter your hotel or accommodation, and the app surfaces real-time transport options — schedules, ticket prices, and optimal routes — so the decision of "where next" arrives with the logistics already solved.</p>
+
+        <h4>The Build</h4>
+        <p>Built and shipped using Google AI Studio, prioritizing fast validation of the idea over writing infrastructure from scratch — a deliberate tool choice, not a shortcut.</p>
+
+        <h4>What's Next</h4>
+        <p>User testing on how people actually define "optimal" — fastest, cheapest, or fewest transfers — and whether the app should default to one or let users set their own priority.</p>
+      </div>
+
+      <div class="ticket-ctas">
+        <a href="https://travelbuddy.ai.studio/" target="_blank" class="btn btn-primary">Live Demo →</a>
+      </div>
+    </div>
+
+    <div class="ticket-divider"></div>
+
+    <div class="ticket">
+      <div class="ticket-tag">Health Tech · Rapid Prototype · Lovable</div>
+      <h3>FoodIntel</h3>
+      <p class="desc">Scan a nutrition label, upload a photo, or enter a barcode — FoodIntel returns a 0–100 health score, ingredient-by-ingredient risk analysis, and how the product measures up against WHO, FSSAI, and ICMR/NIN guidelines.</p>
+
+      <div class="ticket-meta">
+        <div class="meta-item"><div class="k">Platform</div><div class="v">Lovable</div></div>
+        <div class="meta-item"><div class="k">Domain</div><div class="v">Health / Nutrition</div></div>
+        <div class="meta-item"><div class="k">Status</div><div class="v">Live Prototype</div></div>
+      </div>
+
+      <div class="ticket-body">
+        <h4>The Problem</h4>
+        <p>Nutrition labels are dense and hard to interpret quickly — most people can't tell whether a packaged product is actually healthy just by glancing at the ingredients or the numbers on the back.</p>
+
+        <h4>The Approach</h4>
+        <p>A single scan — camera, photo, or barcode — gives users a transparent 0–100 health score and a breakdown of ingredient-level risk, benchmarked against public guidelines from WHO, FSSAI, and ICMR/NIN, so the judgment isn't left to guesswork.</p>
+
+        <h4>The Build</h4>
+        <p>Built and shipped using Lovable, again prioritizing a fast, testable prototype over building label-scanning infrastructure from scratch.</p>
+
+        <h4>What's Next</h4>
+        <p>Validating scoring accuracy against a wider set of packaged foods, and testing whether users trust and act on the health score in real shopping situations.</p>
+      </div>
+
+      <div class="ticket-ctas">
+        <a href="https://foodintel.lovable.app/" target="_blank" class="btn btn-primary">Live Demo →</a>
+      </div>
+    </div>
+
+    <div class="ticket-divider"></div>
+
+    <div class="netflix-card">
+      <div class="netflix-N">N</div>
+      <div class="netflix-tag">Product Case Study · Subscription &amp; Billing UX</div>
+      <div class="netflix-title">Netflix: Reducing Accidental Plan Upgrades</div>
+      <p class="netflix-desc">A proposal to stop customers from unintentionally upgrading their plan just to keep watching on shared, concurrent-stream accounts.</p>
+
+      <button class="netflix-toggle" onclick="toggleNetflixCase(this)">
+        <span class="arrow">▶</span> <span class="btn-label">View Full Case Study</span>
+      </button>
+
+      <div class="netflix-details" id="netflixDetails">
+      <div class="ticket-meta">
+        <div class="meta-item"><div class="k">Company</div><div class="v">Netflix (Independent Study)</div></div>
+        <div class="meta-item"><div class="k">Domain</div><div class="v">Subscriptions / Billing</div></div>
+        <div class="meta-item"><div class="k">Source</div><div class="v">Frontline Support Insight</div></div>
+      </div>
+
+      <div class="ticket-body">
+        <h4>The Problem</h4>
+        <p>While working in customer support, I noticed a recurring issue on shared Netflix accounts: when every streaming slot is in use, Netflix prompts the user to either upgrade the plan or stop streaming on another device. Often that other stream is running on a smart TV or an older device that no one can easily reach, or one that simply takes time to sign out of since it isn't immediate — in most cases around 10–15 minutes — so people upgrade just to keep watching, not because they actually want a bigger plan.</p>
+        <p>Customers who upgraded by accident then contact support to ask for a downgrade, a refund of the extra charge, and their original billing cycle back — creating avoidable frustration and support load.</p>
+
+        <h4>User Pain Points</h4>
+        <div class="subhead">Customer</div>
+        <ul>
+          <li>Accidentally upgrades the subscription</li>
+          <li>Faces unexpected charges</li>
+          <li>Billing date shifts without warning</li>
+          <li>Has to contact support to undo it</li>
+        </ul>
+        <div class="subhead">Business</div>
+        <ul>
+          <li>Higher support contact volume</li>
+          <li>Refund processing costs</li>
+          <li>Reduced customer trust</li>
+          <li>A poor experience despite no actual technical fault</li>
+        </ul>
+
+        <h4>Root Cause</h4>
+        <p>The current flow offers an immediate upgrade path but almost no help resolving the actual conflict — a device that's already streaming. Users end up making a subscription decision under time pressure, instead of being helped to simply free up a slot.</p>
+
+        <h4>Proposed Solution</h4>
+        <p>Netflix already allows users to remotely sign out of active devices. However, on older TVs and streaming devices, the sign-out request can take 10–15 minutes to process. During this delay, users often upgrade their plan just to continue watching, even though they only needed to wait a few minutes.</p>
+
+        <div class="subhead">Option 1 — Improve Remote Sign-Out</div>
+        <p>After initiating a remote sign-out, Netflix should:</p>
+        <ul>
+          <li>Display an estimated completion time (e.g., 10–15 minutes)</li>
+          <li>Explain that older TVs and streaming devices may take longer to process the request</li>
+          <li>Show a "Sign-out in progress" status</li>
+        </ul>
+        <div class="mockup">Maximum devices are streaming.
+
+<span class="hl">Bedroom TV</span> — Watching: Stranger Things (active 42 mins)
+<span class="hl">Living Room TV</span> — Watching: Wednesday
+
+[ End Bedroom Stream ]   [ Keep Streaming Here ]
+
+Remote sign-out initiated. This device will stop streaming in
+approximately 10–15 minutes. Older TVs and streaming devices may
+take longer to process remote sign-out requests.</div>
+
+        <div class="subhead">Option 2 — Join the Queue</div>
+        <p>Provide a "Notify me when a stream becomes available" option. Once an active stream ends, Netflix automatically signs in the waiting device and notifies the user.</p>
+
+        <div class="subhead">Option 3 — Upgrade Only If Needed</div>
+        <p>Keep the Upgrade Plan option, but present it after the above alternatives so users can first resolve the issue using their existing subscription before upgrading.</p>
+
+        <h4>Expected Impact</h4>
+        <ul>
+          <li>Fewer accidental upgrades and less billing confusion</li>
+          <li>Faster resolution, more transparency for the customer</li>
+          <li>Fewer support contacts, refunds, and operational costs for the business</li>
+          <li>Higher trust, without removing Netflix's ability to upsell to users who genuinely want more simultaneous streams</li>
+        </ul>
+
+        <h4>Success Metrics</h4>
+        <ul>
+          <li>Reduction in accidental upgrades and 24-hour downgrade requests</li>
+          <li>Reduction in refund requests</li>
+          <li>CSAT and NPS movement</li>
+          <li>Support contact rate for streaming-limit issues</li>
+          <li>Adoption rate of the Remote Sign Out feature</li>
+        </ul>
+      </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="experience">
+  <div class="wrap">
+    <div class="station">
+      <div class="station-dot"></div>
+      <div class="station-label">The Route So Far</div>
+    </div>
+    <h2 class="section-title">Experience</h2>
+
+    <div style="margin-top:36px;">
+      <div class="stop current">
+        <div class="role">Associate Product Manager (in transition)</div>
+        <div class="org">Building AI &amp; product credentials · Present</div>
+        <div class="desc">Actively pursuing Customer Success and entry-level product roles at technology firms, while strengthening a product-management narrative through applied prototyping and structured certifications.</div>
+      </div>
+      <div class="stop">
+        <div class="role">Associate</div>
+        <div class="org">Sutherland · Feb 2021 – Present (5 yrs 6 mos), Airoli</div>
+        <div class="desc">Client-facing role handling escalations and service delivery, sharpening ticket triage, SLA compliance, and cross-team coordination.</div>
+      </div>
+      <div class="stop">
+        <div class="role">Senior Associate</div>
+        <div class="org">WNS Global Services · Sep 2018 – Jan 2020 (1 yr 5 mos)</div>
+        <div class="desc">Managed client relationships and account operations in a BPO environment, building a long-term foundation in customer-facing problem solving.</div>
+      </div>
+      <div class="stop">
+        <div class="role">Customer Service Representative / Quality Analyst</div>
+        <div class="org">Intelenet Global Services · May 2017 – Aug 2018 (1 yr 4 mos)</div>
+        <div class="desc">Evaluated agent interactions and reported quality metrics to leadership, driving data-informed process improvements while maintaining high customer satisfaction ratings.</div>
+      </div>
+      <div class="stop" style="margin-top:36px; padding-top:36px; border-top:1px dashed var(--hairline);">
+        <div class="role">Bachelor of Commerce, Accounting</div>
+        <div class="org">Education</div>
+        <div class="desc">Foundational grounding in structured, numbers-driven decision making.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="skills">
+  <div class="wrap">
+    <div class="station">
+      <div class="station-dot"></div>
+      <div class="station-label">Built For The Role</div>
+    </div>
+    <h2 class="section-title">Skills</h2>
+    <div class="badge-grid">
+      <div class="badge">Product Strategy</div>
+      <div class="badge">Design Thinking</div>
+      <div class="badge">Product-Led Growth</div>
+      <div class="badge">Rapid AI Prototyping (Loveable, Google AI Studio)</div>
+      <div class="badge">Product Lifecycle Management</div>
+      <div class="badge">Cross-Functional Collaboration</div>
+      <div class="badge">Customer Insight Translation</div>
+      <div class="badge">Agile Fundamentals</div>
+    </div>
+  </div>
+</section>
+
+<section id="certifications">
+  <div class="wrap">
+    <div class="station">
+      <div class="station-dot"></div>
+      <div class="station-label">Credentials</div>
+    </div>
+    <h2 class="section-title">Certifications</h2>
+    <div class="badge-grid">
+      <div class="badge">Agile Project Management</div>
+      <div class="badge">Product Management</div>
+      <div class="badge">Product Strategy</div>
+      <div class="badge">Product-Led Growth Fundamentals</div>
+      <div class="badge">Excel Data Analysis</div>
+    </div>
+  </div>
+</section>
+
+<section id="contact">
+  <div class="wrap">
+    <div class="contact-ticket">
+      <div>
+        <h2>Let's talk product.</h2>
+        <p>Open to Associate Product Management, Customer Success, Specialist, and entry-level product roles.</p>
+      </div>
+      <div style="display:flex; gap:14px; flex-wrap:wrap;">
+        <a href="mailto:devangr4u@gmail.com" class="btn btn-primary">Email Me</a>
+        <a href="https://www.linkedin.com/in/devang-r-2aab961a3/" target="_blank" class="btn btn-secondary">LinkedIn</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  DESTINATION: PRODUCT · CURRENT STOP: THANE, MAHARASHTRA
+</footer>
+
+<script>
+  function toggleNetflixCase(btn){
+    const details = document.getElementById('netflixDetails');
+    const isOpen = details.classList.toggle('open');
+    btn.classList.toggle('open', isOpen);
+    btn.querySelector('.btn-label').textContent = isOpen ? 'Hide Case Study' : 'View Full Case Study';
+  }
+</script>
+
+<script>
+  const roles = ["Associate Product Manager", "Customer Success Specialist", "Product Specialist", "Entry-Level Product Roles"];
+  const el = document.getElementById('flipRole');
+  let i = 0, char = 0, deleting = false;
+
+  function tick(){
+    const word = roles[i];
+    if(!deleting){
+      char++;
+      if(char > word.length){ deleting = true; setTimeout(tick, 1400); return; }
+    } else {
+      char--;
+      if(char < 0){ deleting = false; i = (i+1) % roles.length; char = 0; }
+    }
+    el.innerHTML = word.slice(0, char) + '<span class="cursor">&nbsp;</span>';
+    setTimeout(tick, deleting ? 40 : 70);
+  }
+  tick();
+</script>
+
+</body>
+</html>
